@@ -1,0 +1,33 @@
+# Day 2: Sales Trend Analysis
+
+## 📊 Business Problem
+Is the business growing month-over-month and year-over-year, and are there seasonal patterns in sales? Leadership wants to understand the shape of sales over time — not just the total, but the trend behind it.
+
+## 🗂️ Dataset
+Same AdventureWorks-style dataset as Day 1:
+- `sales_details` — transactional sales data (order date broken into DAY/MONTH/YEAR, quantity, price, sales)
+- `prd_info` — merged in to bring in product names (`prd_nm`) via a key-matching fix (see Key Learnings)
+
+## 🎯 KPIs Tracked
+- Total Sales
+- Total Orders
+
+## 📈 Visuals
+- Line chart: Total Sales trend by Month
+- Bar chart: Sales by Month (seasonality view)
+- Donut chart: Sales by Product (needs refinement — too many individual product keys, planned fix: group by Product Line instead)
+- Slicers: Year and Month, for interactive filtering
+
+## 🛠️ Tools Used
+Power BI Desktop, Power Query (data cleaning, Merge Queries), implicit visual aggregations (no DAX measures this round — kept intentionally simple)
+
+## 💡 Key Learnings
+- Split a raw numeric date (`sls_order_dt`) into DAY/MONTH/YEAR columns using Power Query text extraction
+- Debugged a real data quality issue: a few rows had malformed dates, producing garbage values (e.g. MONTH = "4" instead of "04", YEAR = "0"/"3215"/"5489") — learned to isolate bad rows via column filters and clean them at the source instead of downstream
+- Learned that Power BI sorts **text** columns alphabetically, not numerically — MONTH as text caused a scrambled, misleading trend line until converted to Whole Number
+- Used **Merge Queries** to bring `prd_nm` from `prd_info` into `sales_details`, and handled a key-format mismatch (`prd_key` had a category prefix that `sls_prd_key` didn't) using text extraction
+- Reinforced that raw data almost always needs cleaning before it tells an accurate story — a flat/wrong-looking chart is often a data problem, not a "no trend exists" conclusion
+
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
