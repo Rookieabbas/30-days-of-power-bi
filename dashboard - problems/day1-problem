@@ -1,0 +1,33 @@
+# Day 1: Sales Performance Overview
+
+## 📊 Business Problem
+Leadership wants a single-page overview of overall sales performance — how much is being sold, to whom, and what's driving it — to spot trends and top performers at a glance.
+
+## 🗂️ Dataset
+AdventureWorks-style sales dataset with 3 source tables:
+- `cust_info` — customer demographics (gender, marital status)
+- `prd_info` — product catalog (product line, cost, pricing history)
+- `sales_details` — transactional sales data (orders, quantity, price)
+
+## 🎯 KPIs Tracked
+- Total Sales
+- Total Orders
+- Total Quantity Sold
+- Total Customers
+
+## 📈 Visuals
+- Donut chart: Sales distribution by product
+- Card visuals for core KPIs
+
+## 🛠️ Tools Used
+Power BI Desktop, Power Query (data cleaning), DAX (measures)
+
+## 💡 Key Learnings
+- Practiced connecting and loading multiple related CSV files
+- Wrote first DAX measures (`SUM`, `DISTINCTCOUNT`)
+- Learned the difference between measures and calculated columns (row context vs. filter context)
+- Realized raw datasets need cleaning/transformation before analysis — planned data cleanup for Day 2 onward
+
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
