@@ -48,7 +48,7 @@ Some days may use additional/different datasets — noted in that day's write-up
 
 Final-year Computer Science student, currently building skills toward Data Analyst roles. This challenge is part of my hands-on portfolio alongside SQL practice and other Data Analyst prep.
 
-📎 [LinkedIn](#) *www.linkedin.com/in/abbas-raza-b4530128b*
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/abbas-raza-b4530128b)
 
 ---
 ⭐ If you're following a similar learning path, feel free to fork or reach out!
