@@ -22,7 +22,7 @@ Each day, I tackle a new business problem using Power BI — from data cleaning 
 |-----|-----------|-------------------|--------|
 | 1 | Sales Performance Overview | Overall sales health at a glance |
 | 2 | Sales Trend Analysis | Monthly/yearly growth & seasonality |
-| 3 | — | — | ⬜ Planned |
+| 3 | Customer Segmentation & Demographics | Who are our customers and how spending differ by gender and marital status |
 | ... | | | |
 | 30 | — | — | ⬜ Planned |
 
