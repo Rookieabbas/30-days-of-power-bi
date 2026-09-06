@@ -1,0 +1,43 @@
+# Day 3: Customer Segmentation & Demographics
+
+## 📊 Business Problem
+Who are our customers, and how does spending differ across gender and marital status? Marketing wants to understand customer demographics to target campaigns more effectively, and identify the highest-value customers driving revenue.
+
+## 🗂️ Dataset
+AdventureWorks-style dataset, rebuilt from source tables:
+- `cust_info` — customer demographics (gender, marital status, name, create date)
+- `sales_details` — transactional sales data
+- `prd_info` — product catalog (relationship pending, planned for Day 4)
+
+## 🎯 KPIs Tracked
+- Total Sales
+- Total Customers
+- Average Sales per Customer (first custom DAX measure using `DIVIDE` + `DISTINCTCOUNT`)
+
+## 📈 Visuals
+- Table: Top 10 Customers by Sales
+- Donut chart: Sales by Gender
+- Bar chart: Sales by Marital Status
+- Slicer: Year
+
+## 🛠️ Tools Used
+Power BI Desktop, Power Query (data cleaning, type conversion), DAX (custom measure), Data Modeling (relationships, star schema)
+
+## 💡 Key Learnings & Problems Faced
+- **Date conversion failure:** `sls_order_dt` was stored as Whole Number, and converting directly to Date failed because Power Query tried to interpret it as a serial day-count instead of parsing the literal digits. Fixed by converting to Text first, then to Date — Power Query correctly parsed the text representation.
+- **Many-to-many relationship warning:** `prd_info` and `sales_details` showed a Many-to-Many relationship (with warning) instead of the expected Many-to-One. Root cause: duplicate `prd_key` values in `prd_info` left over from historical pricing rows. Fixed using Remove Duplicates on the key column — relationship corrected itself immediately after.
+- **DAX measure error (row context):** First attempt at an `avg_sales` measure referenced a column directly inside `DIVIDE()` without wrapping it in `SUM()` — DAX couldn't resolve "a single value" for that column across many rows. Fixed by wrapping with `SUM()`, and used `DISTINCTCOUNT()` (not `DISTINCT()`) to get a proper count of unique customers.
+- **Syntax error — missing parenthesis:** A stray missing closing parenthesis in the DAX formula caused the comma to be parsed as part of the wrong function's arguments. Learned to count opening/closing parentheses carefully when nesting functions.
+- **Redundant slicer decision:** Considered adding Gender and Marital Status slicers, but recognized the existing donut and bar charts already provide the same interactive filtering via cross-highlighting — avoided unnecessary UI clutter by relying on existing visuals instead.
+- **Sort order bug:** Top 10 Customers table initially displayed smallest-to-largest despite being "Top 10" — caught and fixed by re-sorting the Sum of Sales column to true descending order.
+
+## 🔍 Insights
+- ~68.6% of sales come from one gender segment, indicating a skew worth highlighting to marketing for targeted campaigns.
+- Top 10 customers range narrowly between ~13.1K–16K in total spend — no single outlier customer dominates, suggesting a broad base of high-value customers rather than reliance on a few big accounts.
+- Sales by marital status shows a fairly even split, suggesting marital status alone may not be a strong differentiator for targeting — worth cross-referencing with other segments (e.g., product category) in a future dashboard.
+
+## 📷 Preview
+*(add your dashboard screenshot here)*
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
