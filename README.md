@@ -23,7 +23,7 @@ Each day, I tackle a new business problem using Power BI — from data cleaning 
 | 1 | Sales Performance Overview | Overall sales health at a glance |
 | 2 | Sales Trend Analysis | Monthly/yearly growth & seasonality |
 | 3 | Customer Segmentation & Demographics | Who are our customers and how spending differ by gender and marital status |
-| ... | | | |
+| 4 | Product Performance Analysis | Which products are driving sales and which products are underperforming|
 | 30 | — | — | ⬜ Planned |
 
 *(Update this table as each day is completed — link the dashboard-problems/dayX.md file and preview image per row as you go)*
