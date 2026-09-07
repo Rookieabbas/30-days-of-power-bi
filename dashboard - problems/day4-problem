@@ -1,4 +1,4 @@
-##Day 4: Product Performance Analysis
+## Day 4: Product Performance Analysis
 📊 Business Problem
 
 The sales team wants to understand which products are driving sales and which products are underperforming. Management needs a simple dashboard to compare product performance and identify the best-selling products.
@@ -7,31 +7,34 @@ The sales team wants to understand which products are driving sales and which pr
 
 AdventureWorks-style sales dataset with 3 source tables:
 
-cust_info — customer demographics
-prd_info — product catalog (product line, cost, pricing history)
-sales_details — transactional sales data (orders, quantity, price)
+-cust_info — customer demographics
+-prd_info — product catalog (product line, cost, pricing history)
+-sales_details — transactional sales data (orders, quantity, price)
 
 ##🎯 KPIs Tracked
 
-Total Sales
-Total Quantity Sold
-Total Orders
-Total Products
-📈 Visuals
-Bar chart: Sales by Product
-Bar chart: Quantity Sold by Product
-Donut chart: Sales by Product Line
-Line chart: Sales by Month
-Table: Top 10 Products by Sales
-Slicers: Product Line, Product, Date
-🛠️ Tools Used
+-Total Sales
+-Total Quantity Sold
+-Total Orders
+-Total Products
 
-Power BI Desktop, Power Query, DAX
+## 📈 Visuals
+-Bar chart: Sales by Product
+-Bar chart: Quantity Sold by Product
+-Donut chart: Sales by Product Line
+-Line chart: Sales by Month
+-Table: Top 10 Products by Sales
+-Slicers: Product Line, Product, Date
 
-💡 Key Learnings
-Practiced analyzing sales at the product level
-Learned to use bar and column charts for comparisons
-Practiced sorting and filtering products by sales
-Learned how slicers affect multiple visuals
-Practiced creating a Top N view
-Improved understanding of relationships between product and sales tables
+##🛠️ Tools Used
+
+-Power BI Desktop, Power Query, DAX
+
+##💡 Key Learnings
+
+-Practiced analyzing sales at the product level
+-Learned to use bar and column charts for comparisons
+-Practiced sorting and filtering products by sales
+-Learned how slicers affect multiple visuals
+-Practiced creating a Top N view
+-Improved understanding of relationships between product and sales tables
