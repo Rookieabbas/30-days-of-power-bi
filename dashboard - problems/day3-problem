@@ -36,8 +36,5 @@ Power BI Desktop, Power Query (data cleaning, type conversion), DAX (custom meas
 - Top 10 customers range narrowly between ~13.1K–16K in total spend — no single outlier customer dominates, suggesting a broad base of high-value customers rather than reliance on a few big accounts.
 - Sales by marital status shows a fairly even split, suggesting marital status alone may not be a strong differentiator for targeting — worth cross-referencing with other segments (e.g., product category) in a future dashboard.
 
-## 📷 Preview
-*(add your dashboard screenshot here)*
-
 ---
 *Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
