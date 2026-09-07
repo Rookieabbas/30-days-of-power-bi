@@ -1,0 +1,42 @@
+# 📊 Day 4 – Business Story
+
+## 📖 The Story Behind the Sales
+
+Looking at the overall sales performance, one category immediately stands out: **R (Regular)**.
+
+### 🟢 R Leads the Way
+R category is the strongest sales contributor overall. Since **R represents "Regular"**, regular products appear to be the backbone of the business, consistently contributing more sales than the other categories.
+
+But the story doesn't end there.
+
+### 🔵 2013 Changed the Picture
+While R dominates overall, **2013 tells a different story**.
+
+The **M category experienced a major surge in sales during 2013**, outperforming R during that period. This sudden change makes 2013 an interesting year to investigate — what drove customers toward M-category products?
+
+### 🔴 The Category Falling Behind
+At the other end of the spectrum, **S is consistently the weakest-selling category**.
+
+This creates an interesting contrast:
+- R → strongest overall performer
+- M → major growth story in 2013
+- S → weakest performer
+
+So, the next question becomes: **how did these categories perform over time?**
+
+### 📈 The Bigger Timeline
+Sales grew from **2010 to 2011**, showing a positive start to the period.
+
+Then came a **noticeable decline in 2012**.
+
+But 2013 completely changed the direction.
+
+Sales **rebounded strongly and reached their highest level in the period**, making 2013 the standout year in the dataset.
+
+### 🎯 The Bigger Picture
+
+The data tells a story of **growth → slowdown → strong recovery**.
+
+R remains the foundation of overall sales, S needs attention due to its weaker performance, while M demonstrates that a weaker category can experience dramatic growth when market demand shifts.
+
+**The biggest question left for further analysis is: _What happened in 2013 that caused sales — particularly M category sales — to boom?_**
