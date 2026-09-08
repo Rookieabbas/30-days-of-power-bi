@@ -24,6 +24,7 @@ Each day, I tackle a new business problem using Power BI — from data cleaning 
 | 2 | Sales Trend Analysis | Monthly/yearly growth & seasonality |
 | 3 | Customer Segmentation & Demographics | Who are our customers and how spending differ by gender and marital status |
 | 4 | Product Performance Analysis | Which products are driving sales and which products are underperforming|
+| 5 | Customer retention & loyalty Analysis | Are customers buying once and never returning, or is there a strong base of repeat buyers? |
 | 30 | — | — | ⬜ Planned |
 
 *(Update this table as each day is completed — link the dashboard-problems/dayX.md file and preview image per row as you go)*
