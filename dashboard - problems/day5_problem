@@ -53,3 +53,5 @@ The company wants to understand customer loyalty patterns — are customers buyi
 - Aggregation options (Sum/Average) don't show up on a numeric-looking column if Power Query loaded it as Text — fixed by setting the correct type before Close & Apply, not after
 - Distinguished "tenure" (time since signup) from "purchase span" (time between first and last order) — they answer different business questions, and it matters which one you're actually measuring
 
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
