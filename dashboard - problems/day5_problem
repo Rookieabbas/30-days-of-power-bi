@@ -1,0 +1,55 @@
+# Day 5: Customer Retention & Loyalty Analysis
+
+## 📌 Business Problem
+The company wants to understand customer loyalty patterns — are customers buying once and never returning, or is there a strong base of repeat buyers? Leadership needs to identify their most valuable customers and understand whether customer tenure correlates with spend, so they can prioritize retention efforts effectively.
+
+## ❓ Key Questions
+1. What percentage of customers are one-time buyers vs repeat buyers (2+ orders)?
+2. Who are the top 10 customers by total revenue?
+3. Is there a relationship between customer purchase span and total spend?
+4. What is the average number of orders per customer?
+5. Does average order value differ between new and repeat customers?
+
+## 📊 Dashboard Components
+- **KPI Cards:** Total Customers, Repeat Customer %, Avg Orders per Customer
+- **Donut Chart:** One-time vs Repeat customer split
+- **Table:** Top 10 customers by total revenue (with order count, avg order value)
+- **Bar Chart:** Customer count by purchase-span bucket vs avg spend per bucket
+- **Column Chart:** Distribution of customers by order count (1, 2, 3+ orders)
+
+## 🗂️ Tables Used
+- `cst_info` — Id, Name, Marital Status, Gender, Create Date
+- `sales_details` — Prd Id, Cst Id, Ord Num, Quantity, Price, Sale, Ord Date
+
+## 🛠️ Approach
+
+**Data prep (Power Query):**
+- Built a `customer_summary` table via Group By on `Cst Id`:
+  - `Order Count` = Count Distinct of `Ord Num`
+  - `Total Revenue` = Sum of `Sale`
+  - `First Order Date` = Min of `Ord Date`
+  - `Last Order Date` = Max of `Ord Date`
+- Merged with `cst_info` to bring in `Create Date`, `Name`, `Gender`, `Marital Status`
+
+**Calculated columns added (Power Query, no DAX):**
+- `Avg Order Value` (Custom Column) = `Total Revenue` / `Order Count`
+- `Buyer Type` (Conditional Column) = "One-time" if Order Count = 1, else "Repeat"
+- `Repeat Flag` (Conditional Column) = 0 if Order Count = 1, else 1 — set to **Whole Number** type so it supports Average aggregation on visuals
+- `Tenure Days` → **Data quality issue found:** `cst_info`'s `Create Date` values were too tightly clustered (all in 2025) to produce a meaningful signup-based tenure metric. Pivoted the definition to a **purchase span** instead:
+  - `Tenure Days` = `Duration.Days([Last Order Date] - [First Order Date])`
+  - Renamed conceptually to "Purchase Span Days" to accurately reflect what it measures (active buying window, not account age)
+- `Tenure Bucket` (Conditional Column) = bucketed Purchase Span Days into ranges, with a separate "Single-order (0 days)" bucket so one-time buyers aren't mixed into the shortest repeat-buyer bucket
+- `Order Count Bucket` (Conditional Column) = "1" / "2" / "3+" grouping for the distribution chart
+
+**Visuals:**
+- Implicit aggregations only (Count Distinct, Sum, Average) — no DAX measures, consistent with the plan to introduce DAX from Day 10 onward
+- Repeat Customer % KPI card built using **Average** aggregation on the 0/1 `Repeat Flag` column, formatted as a percentage — avoids needing a DAX measure for what would normally be a ratio calculation
+- All visuals built from `customer_summary` (one row per customer), not `sales_details` (one row per order), to avoid inflating counts
+
+## 🧠 What I Learned
+- Difference between **Custom Column** (write your own M formula) and **Conditional Column** (point-and-click if/then wizard) in Power Query — both create "calculated columns," just different UIs for it
+- A 0/1 flag column + **Average** aggregation is a clean DAX-free way to get a percentage on a KPI card
+- Always sanity-check a date column's spread (Column Distribution) before building tenure/cohort logic on top of it — assumed data quality, got burned, learned to verify first
+- Aggregation options (Sum/Average) don't show up on a numeric-looking column if Power Query loaded it as Text — fixed by setting the correct type before Close & Apply, not after
+- Distinguished "tenure" (time since signup) from "purchase span" (time between first and last order) — they answer different business questions, and it matters which one you're actually measuring
+
