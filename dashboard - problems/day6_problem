@@ -27,3 +27,6 @@ The company wants to know whether different customer segments show distinct prod
 - Merged with `cst_info` to bring in `Gender` and `Marital Status`
 - Aggregated at the Category × Gender × Marital Status level (not individual product level — with ~60k unique products, category is the right altitude for this analysis; product-level detail would be unreadable and isn't what the business question is asking)
 - **Note on category labels:** the `Category` field in `prd_info` contains only short codes (e.g. R, M, S) with no descriptive name/subcategory field available. Rather than guess at their real-world meaning, this analysis treats them as segment codes and focuses on the *relative distribution and pattern* across customer segments, not on category semantics
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
