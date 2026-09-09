@@ -1,0 +1,29 @@
+# Day 6: Product Preference by Customer Segment
+
+## 📌 Business Problem
+The company wants to know whether different customer segments show distinct product category preferences. Understanding which categories resonate with which segments (Gender, Marital Status) lets marketing and merchandising teams tailor category-level promotions to the right audience instead of running one-size-fits-all campaigns.
+
+## ❓ Key Questions
+1. Which product category is most preferred by each gender?
+2. Which product category is most preferred by each marital status group?
+3. Does total spend by category differ meaningfully across segments, or is preference fairly uniform?
+4. Which segment × category combination contributes the most revenue overall?
+
+## 📊 Dashboard Components
+- **Clustered Bar Chart:** Product Category (axis) split by Gender
+- **Clustered Bar Chart:** Product Category (axis) split by Marital Status
+- **Table:** Category × Segment breakdown (Category, Gender, Marital Status, Total Revenue, Order Count)
+- **KPI Cards:** Top overall category, top category by revenue
+
+## 🗂️ Tables Used
+- `cst_info` — Id, Name, Marital Status, Gender, Create Date
+- `prd_info` — Prd Id, Category (and other product fields as available)
+- `sales_details` — Prd Id, Cst Id, Ord Num, Quantity, Price, Sale, Ord Date
+
+## 🛠️ Approach
+- Implicit aggregations only (SUM, COUNT, COUNT DISTINCT) — no DAX measures, consistent with the plan to introduce DAX from Day 10 onward
+- Grouped `sales_details` by `Prd Id` in Power Query to get order/revenue totals per product
+- Merged with `prd_info` to bring in `Category`
+- Merged with `cst_info` to bring in `Gender` and `Marital Status`
+- Aggregated at the Category × Gender × Marital Status level (not individual product level — with ~60k unique products, category is the right altitude for this analysis; product-level detail would be unreadable and isn't what the business question is asking)
+- **Note on category labels:** the `Category` field in `prd_info` contains only short codes (e.g. R, M, S) with no descriptive name/subcategory field available. Rather than guess at their real-world meaning, this analysis treats them as segment codes and focuses on the *relative distribution and pattern* across customer segments, not on category semantics
