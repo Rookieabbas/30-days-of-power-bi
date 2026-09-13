@@ -1,0 +1,47 @@
+# Day 7 – Order Fulfillment Analysis
+
+## 📌 Business Problem
+The business wants to understand how consistently orders are being fulfilled — from order date to ship date — and flag any orders that deviate from the standard fulfillment cycle. This helps operations teams confirm SLA compliance and investigate exceptions.
+
+## 🎯 Objective
+Analyze the gap between `sls_order_dt` and `sls_ship_dt` in the `sales_details` table to measure fulfillment consistency, identify the standard SLA pattern, and isolate outlier orders that don't follow it.
+
+## 🗂️ Dataset Used
+- **sales_details**: sls_ord_num, sls_prd_key, sls_cust_id, sls_order_dt, sls_ship_dt, sls_due_dt, sls_sales, sls_quantity, sls_price
+- **prd_info**: product details (joined via sls_prd_key)
+- **cust_info**: customer details (joined via sls_cust_id)
+
+## 🛠️ Approach
+
+### 1. Data Preparation (Power Query)
+- Verified `sls_order_dt` and `sls_ship_dt` are clean, valid dates with no nulls
+- Created custom column: `Fulfillment Days = Duration.Days([sls_ship_dt] - [sls_order_dt])`
+- Created custom column: `SLA Status = if [Fulfillment Days] = 12 then "Standard" else "Outlier"`
+- Created custom column: `Deviation = [Fulfillment Days] - 12`
+
+### 2. Measures (DAX)
+```DAX
+Total Orders = COUNTROWS(sales_details)
+Outlier Orders = CALCULATE([Total Orders], sales_details[SLA Status] = "Outlier")
+% SLA Compliance = DIVIDE([Total Orders] - [Outlier Orders], [Total Orders])
+Avg Fulfillment Days = AVERAGE(sales_details[Fulfillment Days])
+```
+
+### 3. Visuals Built
+| Visual | Fields Used | Purpose |
+|---|---|---|
+| SLA Compliance Rate (Card) | `% SLA Compliance` | Headline stat — % of orders following the standard 12-day cycle |
+| Outlier Orders (Card) | `Outlier Orders` | Raw count of exception orders |
+| Outlier Orders Table | sls_ord_num, product, customer, sls_order_dt, sls_ship_dt, Fulfillment Days, Deviation (filtered to SLA Status = "Outlier") | Drill into which specific orders deviated and by how much |
+| Standard vs Outlier Split (Donut) | SLA Status (legend), Total Orders (values) | Visual proportion of standard vs exception orders |
+| Outlier Deviation (Bar) | sls_ord_num (x-axis, filtered to Outliers), Deviation (y-axis) | Shows how far off each outlier is from the 12-day norm |
+| Outliers by Product Category (Bar) | Category (x-axis, filtered to Outliers), count of orders (y-axis) | Checks if outliers cluster around specific products |
+| Outliers by Month (Bar) | sls_order_dt by month (x-axis, filtered to Outliers), count of orders (y-axis) | Checks if outliers cluster around a specific time period |
+
+
+## 🧠 What I Learned
+- `DATEDIFF` is a DAX function, not Power Query — date subtraction in Power Query uses `Duration.Days([end] - [start])` instead
+- Measures must be created via **New Measure** in Report/Model view — the DAX Query View is for running `EVALUATE` queries, not defining measures, so pasting measure syntax there fails silently
+- `DIVIDE()` returns a raw decimal (e.g. 0.997), which needs explicit **Percentage** formatting with increased decimal places to actually see meaningful precision (0.997 rounds to "100%" at 0 decimals)
+- Power BI's auto-applied **"Show value as → % of Grand Total"** on a card can silently override your actual measure and always show 100% for a single-value card — worth checking the field well for a "GT" prefix if a number looks suspiciously flat
+- When real-world variability is missing from a dataset (e.g. a fixed shipping SLA baked into the data), the more interesting analysis is often in the outliers/exceptions rather than the average trend
