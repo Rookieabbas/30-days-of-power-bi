@@ -45,3 +45,6 @@ Avg Fulfillment Days = AVERAGE(sales_details[Fulfillment Days])
 - `DIVIDE()` returns a raw decimal (e.g. 0.997), which needs explicit **Percentage** formatting with increased decimal places to actually see meaningful precision (0.997 rounds to "100%" at 0 decimals)
 - Power BI's auto-applied **"Show value as → % of Grand Total"** on a card can silently override your actual measure and always show 100% for a single-value card — worth checking the field well for a "GT" prefix if a number looks suspiciously flat
 - When real-world variability is missing from a dataset (e.g. a fixed shipping SLA baked into the data), the more interesting analysis is often in the outliers/exceptions rather than the average trend
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
