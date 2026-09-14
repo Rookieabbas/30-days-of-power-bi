@@ -1,0 +1,29 @@
+# Day 8 – Order Day Sales Analysis
+
+## Objective
+Identify which day of the week drives the most sales, and which products
+perform best on each specific day. Also compare overall weekday vs weekend
+sales to spot broader shopping patterns.
+
+## What I Built
+- Added `OrderDayName`, `OrderDayNumber`, and `DayType` (Weekday/Weekend)
+  columns in Power Query, derived from Order Date
+- Sorted `OrderDayName` by `OrderDayNumber` so charts display Monday → Sunday
+  in correct order instead of alphabetically
+- Built an interactive dashboard with:
+  - A day-of-week slicer (Mon–Sun)
+  - Top 10 products by sales, filtered by the selected day
+  - KPI cards for Total Sales and Total Orders (reactive to slicer)
+  - Top 5 products table for the selected day
+  - A weekday vs weekend sales comparison (static, for overall context)
+
+## Key Insight
+_(fill in once you see the numbers, e.g. "Saturdays drive X% more sales than
+the weekly average, led by [Product]" or "Weekday sales are surprisingly
+flat, weekend spikes are concentrated in [Category]")_
+
+## Tools
+Power BI Desktop, Power Query (M), DAX (Top N filter)
+
+## Dataset
+AdventureWorks-style sales data: cust_info, prd_info, sales_details
