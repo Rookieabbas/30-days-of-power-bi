@@ -27,6 +27,7 @@ Each day, I tackle a new business problem using Power BI — from data cleaning 
 | 5 | Customer retention & loyalty Analysis | Are customers buying once and never returning, or is there a strong base of repeat buyers? |
 | 6 | Product Preference by Customer Segmentation | To know whether different customer segments show distinct product category preferences |
 | 7 | Order Fulfillment Analysis | Understand how consistently orders are being fulfilled |
+| 8 | Order Day Sales Analysis | 
 | 30 | — | — | ⬜ Planned |
 
 *(Update this table as each day is completed — link the dashboard-problems/dayX.md file and preview image per row as you go)*
