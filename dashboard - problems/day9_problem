@@ -1,0 +1,31 @@
+# Day 9 – Seasonal Sales Trend Analysis
+
+## Objective
+Identify how sales fluctuate across the year — which months and quarters
+drive the most revenue, spot peak and low periods, and understand what's
+selling during those peaks.
+
+## What I Built
+- Added `OrderMonth`, `OrderMonthNumber`, and `OrderQuarter` columns in
+  Power Query, derived from Order Date
+- Sorted `OrderMonth` by `OrderMonthNumber` so charts display January →
+  December in correct calendar order instead of alphabetically
+- Built a dashboard with:
+  - A line chart of Total Sales by Month (main trend visual)
+  - A bar chart of Total Sales by Quarter (zoomed-out seasonal view)
+  - A Top N table showing best-selling products in the peak month vs. the
+    lowest month
+  - KPI cards for Best Month and Worst Month by sales
+  - (If data spans multiple years) A Year slicer to compare seasonality
+    year over year rather than blending years together
+
+## Key Insight
+_(fill in once you see the numbers, e.g. "Sales peak in [Month], up X%
+over the yearly average, driven mainly by [Category/Product]. Sales dip
+in [Month], possibly due to [seasonal reason if evident].")_
+
+## Tools
+Power BI Desktop, Power Query (M), DAX (Top N filter)
+
+## Dataset
+AdventureWorks-style sales data: cust_info, prd_info, sales_details
