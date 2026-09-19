@@ -1,0 +1,37 @@
+# Day 10: Price Sensitivity & Product Pricing Analysis
+
+## 📌 Objective
+Analyze how product pricing relates to sales volume and revenue — identify which price bands drive the most money vs. the most orders, and spot any products that break the expected pattern.
+
+## 📂 Dataset Used
+- `prd_info` — product details, category, price
+- `sales_details` — order-level sales, quantity
+
+## ❓ Business Questions
+1. Which price range (Low / Mid / High) generates the most revenue?
+2. Which price range sells the highest quantity/volume?
+3. Is there an inverse relationship between price and quantity sold?
+4. How does category composition differ across price bands?
+5. Are there any outlier products that sell high volume despite a high price (or vice versa)?
+
+## 🛠️ Approach
+1. **Power Query — Price Bucketing**
+   - Added a Conditional Column on `prd_info` to bucket products into `Price_Range`: Low / Mid / High
+   - Cutoffs chosen based on the actual price distribution of the product table (not arbitrary round numbers)
+2. **Data Model**
+   - Used existing relationships between `prd_info` and `sales_details` (no new joins needed)
+3. **Visuals Built**
+   - Revenue by Price Range (bar chart)
+   - Quantity Sold by Price Range (bar chart)
+   - Price vs Quantity Sold (scatter plot — one point per product)
+4. **KPI Cards**
+   - Average Price
+   - Total Revenue
+   - Highest-Revenue Price Band
+   - Price Range with highest order count
+
+## 🎯 Key Insights
+"Mid-range products drive 45% of revenue but only 30% of units sold" or "Low-price products dominate order count but contribute the least to revenue"
+
+## 🧰 Tools Used
+- Power BI (Power Query for bucketing, Card + Bar + Scatter visuals — no DAX measures, per the Day 1–10 implicit-aggregation rule)
