@@ -33,5 +33,8 @@ Analyze how product pricing relates to sales volume and revenue — identify whi
 ## 🎯 Key Insights
 "Mid-range products drive 45% of revenue but only 30% of units sold" or "Low-price products dominate order count but contribute the least to revenue"
 
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
+
 ## 🧰 Tools Used
 - Power BI (Power Query for bucketing, Card + Bar + Scatter visuals — no DAX measures, per the Day 1–10 implicit-aggregation rule)
