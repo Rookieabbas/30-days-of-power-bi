@@ -30,6 +30,7 @@ Each day, I tackle a new business problem using Power BI — from data cleaning 
 | 8 | Order Day Sales Analysis | Identify which day of the week drives the most sales |
 | 9 | Seasonal Trend Analysis | Identify how sales fluctuate across the year — which months and quarters drive the most revenue |
 | 10 | Price Sensitivity & Product Pricing Analysis | Analyze how product pricing relates to sales volume and revenue |
+| 11 |
 | 30 | — | — | ⬜ Planned |
 
 *(Update this table as each day is completed — link the dashboard-problems/dayX.md file and preview image per row as you go)*
