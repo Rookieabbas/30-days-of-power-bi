@@ -1,0 +1,52 @@
+# Day 11: Sales Trend Analysis (DAX Upgrade)
+
+## 📌 Objective
+Upgrade the Day 2 Sales Trend Analysis dashboard using DAX time intelligence: compare sales against the previous year and previous month, and see which years, months and product lines drive the trend.
+
+## 📂 Dataset Used
+- `sales_details`: order-level sales, quantity, order date
+- `prd_info`: product details, product line (`prd_line`)
+- `Date Table`: calendar table created in DAX, marked as the date table and related to `sls_order_dt`
+
+## ❓ Business Questions
+1. How have total sales changed from year to year?
+2. How does each year compare with the previous year (YoY %)?
+3. How does a selected month compare with the previous month (MoM %)?
+4. Which months contribute the most sales?
+5. Which product lines drive the most revenue?
+
+## 🛠️ Approach
+1. **Date Table**
+   - Created a calendar table in DAX and marked it as the date table
+   - Related `Date Table[Date]` to `sales_details[sls_order_dt]`
+2. **DAX Measures**
+   - `Total Sales`, `Total Orders`, `Avg Order Value`
+   - `Sales LY` using `SAMEPERIODLASTYEAR`
+   - `Sales PM` using `DATEADD` (-1 month)
+   - `YoY %` and `MoM %` using `DIVIDE`
+3. **Visuals Built**
+   - Total Sales by Year (line chart)
+   - Sales PM by Year (column chart)
+   - Decomposition tree: Sales by Year, Month Name and Product Line
+4. **KPI Cards**
+   - Total Sales
+   - Total Orders
+   - YoY %
+   - MoM %
+5. **Slicers**
+   - Year and Month, so the cards and charts update for any period
+
+## 🎯 Key Insights
+- 2013 is the peak year at about 16.3M in sales, up sharply from about 5.8M in 2012
+- 2012 dipped below 2011 (about 7.1M), so growth was not steady
+- 2010 and 2014 are partial years (under 50K each), so their trends and YoY values are not meaningful
+- 2011 YoY shows about 14,515% because the 2010 base is very small
+- December, November and June are the highest-selling months across all years
+- Product line R leads sales (about 14.6M), followed by M (about 10.3M), T (about 3.9M) and S (about 0.6M)
+
+## 🧰 Tools Used
+- Power BI (first DAX day: Date Table, time-intelligence measures, Card + Line + Column + Decomposition Tree visuals)
+
+  
+---
+*Part of my 30 Days of Power BI challenge — building one dashboard a day while preparing for Data Analyst roles.*
