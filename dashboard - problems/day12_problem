@@ -1,0 +1,49 @@
+# Day 12: Product Performance Analysis (DAX)
+
+## 📌 Objective
+Rebuild the Day 4 Product Performance Analysis dashboard using DAX measures, and go beyond totals by adding share of total, product ranking, year-over-year trend comparison and profit margin.
+
+## 📂 Dataset Used
+- `sales_details`: order-level sales, quantity, order date
+- `prd_info`: product details, product line (`prd_line`), product cost (`prd_cost`)
+- `Date Table`: calendar table (from Day 11), marked as the date table and related to `sls_order_dt`
+
+## ❓ Business Questions
+1. How much does each product line contribute to total sales?
+2. Which products are the top 10 performers, and how do they rank?
+3. How do monthly sales compare with the same months last year?
+4. Which product lines keep the most profit relative to their sales?
+5. Do the highest-selling lines also have the highest margins?
+
+## 🛠️ Approach
+1. **Data Model**
+   - Reused the Day 11 model and Date Table (Save As, so Day 11 stays untouched)
+2. **DAX Measures**
+   - `Total Quantity` and `Total Products` (`SUM`, `DISTINCTCOUNT`)
+   - `Sales % of Total` using `CALCULATE` with `ALLSELECTED`
+   - `Product Rank` using `RANKX`
+   - `Total Cost`, `Profit` and `Profit Margin %` using `SUMX` with `RELATED`
+   - Reused `Total Sales`, `Total Orders` and `Sales LY` from earlier days
+3. **Visuals Built**
+   - Sales % of Total by Product Line (bar chart)
+   - Top 10 Products with rank, sales and share (table, Top N filter)
+   - Monthly Total Sales vs Sales LY (line chart, sorted by month number)
+   - Profit Margin % by Product Line (column chart)
+4. **KPI Cards**
+   - Total Sales
+   - Total Orders
+   - Total Quantity
+   - Total Products
+5. **Slicer**
+   - Year, so the trend and ranking update for any period
+
+## 🎯 Key Insights
+- Product line R contributes about 50% of total sales (about 14.6M), followed by M at about 35% (about 10.3M), T at about 13% and S at about 2%
+- Four product lines hold the whole portfolio, and the top two (R and M) carry about 85% of sales
+- Top 10 products: *[add your top product and its share after checking the table]*
+- Best and worst profit margin lines: *[add after checking the margin chart]*
+- Monthly trend vs last year: *[add one line after selecting 2012 or 2013]*
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
+- Power BI (DAX: `CALCULATE`, `ALLSELECTED`, `RANKX`, `SUMX`, `RELATED`, `SAMEPERIODLASTYEAR` | Card + Bar + Column + Line + Table visuals)
