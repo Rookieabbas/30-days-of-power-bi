@@ -32,6 +32,7 @@ Each day, I tackle a new business problem using Power BI — from data cleaning 
 | 10 | Price Sensitivity & Product Pricing Analysis | Analyze how product pricing relates to sales volume and revenue |
 | 11 | Sales Trend Analysis USING DAX | Analyzing Sales LY, YoY Growth % and Sales YTD |
 | 12 | Product Performance Analysis (DAX) | Product Performance Analysis dashboard using DAX measures |
+| 13 | Customer Retention & Loyalty Analysis (DAX) | Customer Retention & Loyalty dashboard using DAX measures |
 | 30 | — | — | ⬜ Planned |
 
 *(Update this table as each day is completed — link the dashboard-problems/dayX.md file and preview image per row as you go)*
