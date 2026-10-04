@@ -1,0 +1,52 @@
+# Day 13: Customer Retention & Loyalty Analysis (DAX)
+
+## 📌 Objective
+Rebuild the Day 5 Customer Retention & Loyalty dashboard using DAX measures, and answer whether customers buy once and never return, or whether there is a strong base of repeat buyers.
+
+## 📂 Dataset Used
+- `sales_details`: order-level sales, order dates, customer ID
+- `cust_info`: customer details
+- `Date Table`: calendar table (from Day 11), marked as the date table and related to `sls_order_dt`
+
+## ❓ Business Questions
+1. How many customers are repeat buyers vs one-time buyers?
+2. What share of total revenue comes from repeat customers?
+3. How does the repeat customer rate change from year to year?
+4. Who are the top 10 customers by sales?
+5. How long do repeat customers stay active (first order to last order)?
+
+## 🛠️ Approach
+1. **Data Model**
+   - Reused the Day 12 model and Date Table (Save As, so earlier days stay untouched)
+   - Removed the gender column from `cust_info` because about 60% of its values were empty, so a gender split would have been misleading
+2. **DAX Measures**
+   - `Total Customers` using `DISTINCTCOUNT`
+   - `Repeat Customers` using `COUNTROWS` with `FILTER` over `VALUES` of customer ID (customers with more than 1 order)
+   - `One-time Customers`, `Repeat Customer %`
+   - `Repeat Customer Sales`, `One-time Customer Sales` and `Repeat Sales %` using `CALCULATE` with the same customer filter
+   - `Customer Rank` using `RANKX`
+   - `Avg Tenure (Days)` and `Repeat Avg Tenure (Days)` using `AVERAGEX` (first-to-last order span per customer)
+3. **Visuals Built**
+   - Repeat vs One-time customer sales (column chart)
+   - Repeat Customer % by Year (column chart)
+   - Top 10 Customers with rank, sales and orders (table, Top N filter)
+4. **KPI Cards**
+   - Total Customers
+   - Repeat Customers
+   - One-time Customers
+   - Repeat Customer %
+   - Repeat Sales %
+   - Avg Tenure (Days)
+5. **Slicer**
+   - Year, so the cards and charts update for any period
+
+## 🎯 Key Insights
+- Out of *[total customers]* customers, *[repeat customers]* (*[repeat %]*) bought more than once and *[one-time customers]* bought only once
+- Repeat customers generate *[repeat sales %]* of total revenue, *[higher / lower]* than their share of customers
+- Repeat customers stay active for an average of *[repeat avg tenure]* days between first and last order
+- Top customer: *[name or ID]* with *[sales]* in sales *(optional)*
+- Within a single year, the repeat rate is lower than the lifetime figure, because "repeat" then means more than one order in that year; 2010 and 2014 are partial years and are not meaningful
+
+---
+*Part of my [30 Days of Power BI](../) challenge — building one dashboard a day while preparing for Data Analyst roles.*
+- Power BI (DAX: `CALCULATE`, `FILTER`, `VALUES`,
